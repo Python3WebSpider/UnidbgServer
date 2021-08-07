@@ -9,9 +9,11 @@ import java.util.Map;
 @RestController
 public class AppController {
 
+    NativeUtils utils = new NativeUtils();
+
     @RequestMapping("/encrypt")
-    public Map<String, String> encrypt(String plaintext, int offset) {
-        String token = NativeUtils.call(plaintext, offset);
+    public Map<String, String> encrypt(String string, int offset) {
+        String token = utils.encrypt(string, offset);
         Map<String, String> map = new HashMap<>();
         map.put("token", token);
         return map;
